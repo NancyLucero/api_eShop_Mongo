@@ -9,12 +9,23 @@ const mongoose = require('mongoose');
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
+
 // Invocamos a dotenv
 require('dotenv/config');
 const api = process.env.API_URL;
 
 // rutas
 
+const productoRouter = require('./routers/productos');
+const userRouter = require('./routers/users');
+const carritoRouter = require('./routers/carritos');
+
+/*
+const productoRouter = require('./routers/shop');*/
+
+
+app.use('/productos',productoRouter);
+app.use('/users',userRouter);
 
 // conectar a la BD
 mongoose.connect(process.env.CONNECTION_STRING,{
