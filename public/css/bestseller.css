@@ -1,0 +1,117 @@
+.contenedorBox {
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    margin-top: 1.25rem;
+}
+
+.boxLampsBestSeller{
+    cursor: pointer;
+}
+
+.boxLampsBestSeller img{
+    object-fit: cover;
+}
+
+.boxLampsBestSeller:nth-child(1){
+    width: 40%;
+    height: auto;
+    margin-right: 8%;
+}
+
+.boxLampsBestSeller:nth-child(2),
+.boxLampsBestSeller:nth-child(3){
+    width: 24%;
+    height: 21.875rem;
+}
+
+.boxLampsBestSeller:nth-child(2) img,
+.boxLampsBestSeller:nth-child(3) img{
+    height: 250px;
+}
+
+.boxLampsBestSeller:nth-child(4){
+    width: 50%;
+    order: 2;
+}
+
+.contenedorTextoBD {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.contenedorTextoBD p {
+    font-size: 12px;
+    font-weight: 600;
+    padding-bottom: 1.25rem;
+}
+
+.nombreStudio {
+    color: var(--ColorTextoSecundario);
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.btnBoxDown {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 40%;
+    padding: 12px;
+    color: #000;
+    background-color: var(--ColorTextoPrincipal);
+    border: 1px solid #696969;
+}
+
+.btnBoxDown:hover {
+    background-color: #000;
+    color: var(--ColorTextoPrincipal);
+    border: 1px solid #000;
+}
+
+
+
+@media(max-width:768px) {
+    .boxLampsBestSeller:nth-child(n){
+        width: 47.7%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .boxLampsBestSeller:nth-child(2),
+    .boxLampsBestSeller:nth-child(3){
+        height: auto;
+    }
+
+    .boxLampsBestSeller:nth-child(n) img{
+        height: 21.875rem;
+    }
+
+    .contenedorTextoBD {
+        margin-top: 10px;
+        width: 100%;
+        order: 2;
+    }
+
+    .btnBoxDown {
+        width: 100%;
+    }
+}
+
+@media(max-width:500px) {
+    .contenedorBox {
+        display: flex;
+        justify-content: center;
+        padding-top: 1.25rem;
+    }
+    .boxLampsBestSeller:nth-child(n){
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

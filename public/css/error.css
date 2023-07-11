@@ -1,0 +1,46 @@
+.error{
+    background-image: url(../img/error.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    align-items: center;
+}
+
+.contenedorError{
+    flex-direction: column;
+    padding-top: 4rem;
+}
+.textoError{
+    padding-bottom: 13%;
+    height: auto;
+}
+
+.textoError>h1{
+    color: var(--ColorTextoPrincipal);
+    font-size: 35px;
+    margin-bottom: 1.25rem;
+}
+
+.textoError>p{
+    color: var(--ColorTextoPrincipal);
+    font-size: 14px;
+    width: 30%;
+    margin-bottom: 1.875rem;
+}
+
+.copyrigthError{
+    font-size: 10px;
+    color: var(--ColorTextoPrincipal);
+}
+
+@media(max-width:900px){
+    .textoError p{
+        width: 100%;
+    }
+}
+
+@media(max-width:400px){
+    .contenedorError{
+        padding-top: 5.5rem;
+    }
+}

@@ -1,0 +1,31 @@
+<%-include('./partials/head.ejs') %>
+<%-include('./partials/header.ejs') %>
+
+<div>
+    <%-include('../views/inicio/hero.ejs') %>
+    <%-include('../views/inicio/bestseller.ejs') %>
+    <%-include('../views/inicio/saleofcollection.ejs') %>
+    <%-include('../views/inicio/bestdesigner.ejs') %>
+    <%-include('../views/inicio/newCollection.ejs') %>
+    <%-include('../views/inicio/productypes.ejs') %>
+    <%-include('../views/inicio/ourEmotions.ejs') %>
+    <%-include('../views/inicio/signup.ejs') %>
+    
+</div>
+        
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<% if (typeof alert != "undefined") { %>
+    <script>
+        Swal.fire({
+            title: '<%= alertTitle %>',
+            text: '<%= alertMessage %>',
+            icon: '<%= alertIcon %>',
+            showConfirmButton: '<%= showConfirmButton %>',
+            timer: '<%= timer %>'
+        }).then(()=>{
+            window.location='/<%= ruta %>'
+        })
+    </script>
+  <% } %>
+
+<%-include('../views/partials/footer.ejs') %>
