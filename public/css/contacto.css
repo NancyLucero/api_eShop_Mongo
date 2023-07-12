@@ -1,0 +1,85 @@
+.contacto{
+    padding-bottom: 5rem;
+}
+.boxInfoLocal{
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.infoLocal{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+.imgUbicacion{
+    width: 80%;
+}
+
+
+.infoLocal>.tituloContacto{
+font-size: 16px;
+margin: 1rem 0;
+}
+
+.infoLocal>.contactoLocal{
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+}
+
+/* formulario */
+
+.contenedorFormImg{
+justify-content: space-between;
+margin-top: 5rem;
+}
+
+.formConsultas{
+    width: 40%;
+}
+
+.formConsultas>p{
+    width: 100%;
+    font-size: 12px;
+}
+.formContacto{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.nombreForm,
+.formEmail,
+.consultaForm{
+    padding: 10px;
+    margin-right: .5rem;
+    background-color: transparent;
+    border: 1px solid #757575;
+    outline-color: var(--ColorTextoSecundario);
+}
+.boxConsultaBtn{
+    justify-content: space-between;
+}
+
+.consultaForm{
+    flex: 2;
+    resize: vertical;
+ }
+
+
+ @media(max-width:768px){
+    .boxInfoLocal{
+        flex-direction: column;
+    }
+    .imgUbicacion{
+        width: 100%;
+    }
+    .contenedorFormImg{
+        flex-direction: column;
+    }
+    .formConsultas{
+        width: 100%;
+    }
+ }

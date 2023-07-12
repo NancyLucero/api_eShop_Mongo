@@ -73,6 +73,9 @@ router.get(`/comercio`, async (req,res)=>{
     //res.send(productoLista);
 })
 
+
+
+
 router.get(`/:id`, async (req,res)=>{
     // busca y trae detalles de la categoria da error 
     //const producto= await Producto.findById(req.params.id).populate('categoria');

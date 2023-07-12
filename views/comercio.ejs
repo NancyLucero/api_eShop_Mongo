@@ -145,10 +145,10 @@
                         </div>
 
                     </aside>
-                    <div class="boxProductos grilla" id="productosContainer">
-                        <%for(let i=0;i<=8;i++){%>
-                            <%- include('./lampProduct.ejs', { product: products[i] }) %>
-                        <%}%>
+                    <div class="boxProductos grilla" id="productosContainer" >
+                        <%products.forEach((product,index)=>{%>
+                            <%- include('./lampProduct.ejs', { product: product,index:index }) %>
+                        <%})%>
                     </div>
                 </div>
             </div>

@@ -59,12 +59,14 @@ p{
   border-radius: 1px;
 }
 
+
 .boxLamps .medidas {
   position: absolute;
   top: 5px;
   left: 10px;
   font-size: 10px;
   color: #757575;
+  color: #373535;
 }
 
 .contenedorTextos {

@@ -14,6 +14,11 @@ const productoSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    infoAutor:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'diseniador',
+        required: true
+    },
     precio: {
         type:Number,
         required:true
@@ -47,6 +52,15 @@ const productoSchema = mongoose.Schema({
     },
     medida:{
         type:String
+    },
+    fuenteLuz:{
+        type:String
+    },
+    voltaje:{
+        type:String
+    },
+    vendidos:{
+        type:Number
     }
 })
 
