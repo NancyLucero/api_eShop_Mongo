@@ -30,7 +30,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// https://www.youtube.com/watch?v=3SOaTx6hxno&list=PLrAw40DbN0l3X-ol5MHc9UeyfdTcDCPcy
+// para traer del body
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
@@ -40,25 +40,15 @@ const productoRouter = require("./routers/productos");
 const userRouter = require("./routers/users");
 const categoriaRouter = require("./routers/categorias");
 const pedidoRouter = require("./routers/pedidos");
+const carroRouter = require("./routers/carro");
 const homeRouter = require("./routers/home");
 
 app.use("/productos", productoRouter);
 app.use("/users", userRouter);
 app.use("/categorias", categoriaRouter);
 app.use("/pedidos", pedidoRouter);
+app.use("/carro", carroRouter);
 app.use("/", homeRouter);
-
-// FUNCIONES
-
-function calcularTotal(carrito, req){
-  total=0;
-  for(let i=0; i<carrito.length;i++){
-      total=total + (carrito[i].precio*carrito[i].cantidad);
-  }
-  req.session.total=total;
-  return total;
-}
-
 
 // login
 app.get('/login', (req, res) => {
@@ -72,42 +62,9 @@ app.get(`/logout`, (req, res) => {
   })
 })
 
-// carrito
-app.get('/carrito', (req, res) => {
-  if (req.session.carrito){        
-    var carritos = req.session.carrito;    
-    // calcular el total
-    calcularTotal(carritos,req);    
-    // ir a pagina carrito              
-    
-    res.render('carrito',{
-                cart:true,
-                carritos:carritos,
-                carrito:true,
-                cant:carritos.length,
-                login:true,
-                total:total,
-                name:req.session.name,
-                total:0
-            }) 
-  }else{
-      res.render('carrito',{
-        cart:false,
-        carritos:carritos,
-        carrito:false,
-        cant:0,
-        login:false,
-        name:req.session.name,
-        total:0,
-      alert:true,
-      alertTitle: "Advertencia",
-      alertMessage: "No tiene productos en el carrito",
-      alertIcon: 'warning',
-      showConfirmButton:false,
-      timer:1800,
-      ruta:'/'
-      })
-  }
+// registrar
+app.get('/registrar',(req,res)=>{
+  res.render('registrar')
 })
 
 

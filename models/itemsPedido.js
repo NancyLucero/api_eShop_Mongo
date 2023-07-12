@@ -12,5 +12,4 @@ const itemSchema = mongoose.Schema({
     }
 })
 
-
 exports.ItemPedido = mongoose.model('ItemPedido', itemSchema);

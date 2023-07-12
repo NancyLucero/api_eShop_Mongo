@@ -16,7 +16,7 @@
                             <td align="center">                                        
                                 <p class="card-title"><%= producto.nombre %></p>
                                 <p class="card-text"><strong><%= producto.autor %></strong></p>
-                                <form method="post" action="editarCantidad">
+                                <form method="post" action="/carro/editarCantidad">
                                     <input type="hidden" name="id" value="<%= producto.idProducto %>">
                                     <input type="submit" value="-" class="edit-btn" name="decrementar">                                             
                                     <input type="text" class=""  size=2 name="cantidad" value="<%= producto.cantidad %>" readonly>  
@@ -25,7 +25,7 @@
                                 <% var importe = parseInt(producto.precio)*parseInt(producto.cantidad); %>
                                 <span>$ <%= importe %></span>
                                 <form action="/productos/quitarProducto" method="post">
-                                    <input type="hidden" name="id" value="<%= producto.idProducto %>">
+                                    <input type="hidden" name="id" value="<%= producto.idProducto%>">
                                     <input class="btn btn-dark" type="submit" name="quitar" value="quitar"> 
                                 </form>                      
                             </td>               
@@ -33,22 +33,22 @@
                     <% }); %>
                 </tbody>
             </table>                   
-            
         </div>
+        <% if (carritos.length>0) {%>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="comprar" method="post">
+                    <form action="/pedidos/comprar" method="post">
                         <h3>Informacion de Contacto</h3>
                         <div class="">
-                            <input type="text" name="nombre" placeholder="Apellido y Nombre" class="form-control">                    
+                            <input type="text" name="nombre" placeholder="Apellido y Nombre" class="form-control" required>                    
                         </div>
                         <div>
-                            <input type="text" name="direccion" placeholder="Direccion" class="form-control">
+                            <input type="text" name="direccion" placeholder="Direccion" class="form-control" required>
                         </div>
                         <div>
-                            <input type="text" name="telefono" placeholder="telefono" class="form-control">
-                            <input type="email" name="mail" placeholder="Mail" class="form-control">
+                            <input type="text" name="telefono" placeholder="telefono" class="form-control" required>
+                            <input type="email" name="mail" placeholder="Mail" class="form-control" required>
                         </div>
 
                         <div class="container-fluid">
@@ -76,7 +76,7 @@
                             <label><strong> $ <%= total %></strong></label>
                         </div>
                         <div> 
-                            <% var formaPago="efectivo"; var tipoEnvio="local" %>
+                            
                             <input type="submit" class="btn btn-dark" value="pagar">                           
                             <!--<a href="/comprar" class="btn btn-dark">Pagar</a>-->
                         </div>
@@ -85,6 +85,7 @@
                 </div>
             </div>            
         </div>
+        <%}%>
     </div>
 </div>
 <%}%>
@@ -100,7 +101,7 @@
             showConfirmButton: '<%= showConfirmButton %>',
             timer: '<%= timer %>'
         }).then(()=>{
-            //window.location='/<%= ruta %>'
+            window.location='/<%= ruta %>'
         })
     </script>
   <% } %>
