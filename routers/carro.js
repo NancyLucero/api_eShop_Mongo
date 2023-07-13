@@ -32,7 +32,8 @@ router.get('/carrito', (req, res) => {
             cant:carritos.length,
             login:true,
             total:total,
-            name:req.session.name
+            name:req.session.name,
+            producto:producto
             }) 
     }else{
         res.render('carrito',{

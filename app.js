@@ -43,6 +43,7 @@ const pedidoRouter = require("./routers/pedidos");
 const carroRouter = require("./routers/carro");
 const homeRouter = require("./routers/home");
 
+
 app.use("/productos", productoRouter);
 app.use("/users", userRouter);
 app.use("/categorias", categoriaRouter);
@@ -62,6 +63,7 @@ app.get(`/logout`, (req, res) => {
   })
 })
 
+
 // registrar
 app.get('/registrar',(req,res)=>{
   res.render('registrar')
@@ -75,6 +77,13 @@ app.get('/contacto', (req, res) => {
     login:false
   })
 })
+
+app.get('/*', (req, res) => {
+  res.render('error',{
+    login:false
+  })
+  })
+
 
 // conectar a la BD
 mongoose

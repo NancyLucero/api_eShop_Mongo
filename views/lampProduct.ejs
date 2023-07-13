@@ -1,6 +1,5 @@
-<div class="boxLamps">
-  <!--<img src="/img/Lamparas/lampara.jpg" alt="" />-->
-  <img src="/img/Lamparas/<%=product.imagen%>" alt="" />
+<div class="boxLamps" id="product-<%= product.id %>" onclick="redirectToProduct('<%= product.id %>')">
+  <img src="/img/Lamparas/Productos/<%=product.imagen%>" alt="<%= product.nombre %>">
   <p class="medidas"><%=product.medida%></p>
   <div class="contenedorTextos">
     <p class="marca"><%=product.nombre%></p>
@@ -9,12 +8,8 @@
     <p class="creador"><%=product.autor%></p>
     <p class="descripcion"><%=product.descripcion%></p>
   </div>
-  <form action="/productos/agregar" method="post">
-    <input type="hidden" name="idProducto" value="<%= product.id %>">
-    <input type="hidden" name="nombre" value="<%= product.nombre %>">
-    <input type="hidden" name="precio" value="<%= product.precio %>">
-    <input type="hidden" name="imagen" value="<%= product.imagen %>">
-    <input type="hidden" name="cantidad" value="1">
-    <input class="btnCarrito" type="submit" value="Comprar">                        
-  </form>
+  
 </div>
+
+
+<script src="/js/paginaProducto.js"></script>

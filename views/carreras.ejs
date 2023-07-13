@@ -1,0 +1,36 @@
+<%-include('./partials/head.ejs') %>
+    <%-include('./partials/header.ejs') %>
+
+        <div class="container-fluid d-flex justify-content-center contenedorPrincipal" id="inicio">
+            <div class="container w-75 d-flex contenedorSecundario carreras">
+                <div class="contenedorCarrera">
+                    <img src="/img/designers/<%= diseniadores.imagens %>" alt="<%= diseniadores.nombre %>">
+                    <div class="textoCarrera">
+                        <h3><%= diseniadores.nombre %></h3>
+                        <p><%= diseniadores.descripcion %></p>
+                    </div>
+                </div>
+                <div class="productosDiseniador">
+                    <h3>productos de <%= diseniadores.nombre %></h3>
+                    <div class="contenedorProductDiseniadores">
+                       
+                    </div>
+                    <!-- segun cantidad de productos de diseñadores -->
+                    <div class="contenedorProductDiseniadores contenedorOculto" id="contenedorOculto">
+                        
+
+                    </div>
+                </div>
+
+                <button class="btnCarreras" id="btnCarreras" onclick="contenedorVisible()">ver más</button>
+
+
+            </div>
+        </div>
+
+
+        <script src="/js/main.js"></script>
+        <script src="/js/carreras.js"></script>
+        <script src="/js/diseniadores.js"></script>
+
+        <%-include('./partials/footer.ejs') %>

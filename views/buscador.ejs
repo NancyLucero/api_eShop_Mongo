@@ -1,0 +1,32 @@
+<%-include('./partials/head.ejs') %>
+  <%-include('./partials/header.ejs') %>
+
+  <div class="container-fluid d-flex justify-content-center contenedorPrincipal contenedorBuscador">
+    <div class="container w-75 contenedorSecundario boxBuscador">
+        <div class="buscador">
+            <i class="bi bi-x-lg cerrarBuscador" id="cerrarBuscador"></i>
+            <input type="text" name="" id="buscador" placeholder="Ingresa tu búsqueda aquí" onkeyup="keyUpSearch(event)">
+        </div>
+        <div class="resultadoLamps">
+            
+            
+
+            <!-- <div class="lamparasEncontradas resultadosOcultos"
+            id="resultadosOcultos"
+            >
+           
+            </div> -->
+
+            
+        </div>
+        
+        </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="/js/main.js"></script>
+  <script src="/js/buscador.js"></script>
+  <%-include('./partials/footer.ejs') %>

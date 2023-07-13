@@ -64,7 +64,8 @@
     list-style: none;
 }
 
-.iconUser{
+.iconUser,
+.logOut{
     font-size: 18px;
 }
 

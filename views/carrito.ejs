@@ -1,5 +1,98 @@
 <%-include('./partials/head.ejs') %>
-<%-include('./partials/header.ejs') %>
+    <%-include('./partials/header.ejs') %>
+
+        <div class="container-fluid d-flex justify-content-center contenedorPrincipal">
+            <div class="container w-75 contenedorSecundario contenedorCarrito">
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <% if (cart) {%>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <% carritos.forEach(function(producto) { %>
+                                        <tr>
+                                            <!--<td width="50%" height="50%" valign="top" background="resources/img/productos/<%= producto.imagen %>">-->
+                                            <td height=100 width=100>
+                                                <img src="/img/productos/Productos/<%= producto.imagen %>" height=100 width=100
+                                                    alt="...">
+                                            </td>
+                                            <td align="center">
+                                                <p class="card-title">
+                                                    <%= producto.nombre %>
+                                                </p>
+                                                <p class="card-text"><strong>
+                                                        <%= producto.autor %>
+                                                    </strong></p>
+                                                <form method="post" action="/carro/editarCantidad">
+                                                    <input type="hidden" name="id" value="<%= producto.idProducto %>">
+                                                    <input type="submit" value="-" class="edit-btn" name="decrementar">
+                                                    <input type="text" class="" size=2 name="cantidad"
+                                                        value="<%= producto.cantidad %>" readonly>
+                                                    <input type="submit" value="+" class="edit-btn" name="incrementar">
+                                                </form>
+                                                <% var importe=parseInt(producto.precio)*parseInt(producto.cantidad); %>
+                                                    <span>$ <%= importe %></span>
+                                                    <form action="/productos/quitarProducto" method="post">
+                                                        <input type="hidden" name="id"
+                                                            value="<%= producto.idProducto %>">
+                                                        <input class="btn btn-dark" type="submit" name="quitar"
+                                                            value="quitar">
+                                                    </form>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                            <%}%>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="comprar" method="post" class="formCarrito">
+                                    <h3>Informacion de Contacto</h3>
+                                    
+                                        <input type="text" name="nombre" placeholder="Nombre" class="nombreCarrito">
+                                        <input type="text" name="nombre" placeholder="Apellido" class="apellidoCarrito">
+                                    
+                                        <input type="text" name="direccion" placeholder="Direccion" class="direccionCarrito">
+                                    
+                                        <input type="text" name="telefono" placeholder="telefono" class="telCarrito">
+                                        <input type="email" name="mail" placeholder="Mail" class="emailCarrito">
+                                    
+
+                                    <div class="container-fluid mb-3 mt-3 boxCarritoPago">
+                                        <h3>Forma de Pago</h3>
+                                        <div>
+                                            <input name="forma" type="radio" value="efectivo" onclick="text(0)"
+                                                checked />Efectivo
+                                        </div>
+                                        <div>
+                                            <input name="forma" type="radio" value="tcredito"
+                                                onclick="text(1)" />Tarjeta de Credito
+                                        </div>
+                                        <h3 class=" mb-3 mt-3">Tipo de Envio</h3>
+                                        <div>
+                                            <input name="envio" type="radio" value="retirar" onclick="text(0)"
+                                                checked />Retirar Local
+                                        </div>
+                                        <div>
+                                            <input name="envio" type="radio" value="correo" onclick="text(1)" />Correo
+                                            Argentino
+                                        </div>
+
+                                    </div>
+                                    <h3>Total</h3>
+
+                                    <div>
+                                        <label>Subtotal: $ <%= total %></label>
+                                        <label>Comision: $ 0.00</label>
+                                        <label><strong> $ <%= total %></strong></label>
+                                    </div>
+                                    <div>
+                                        <% var formaPago="efectivo" ; var tipoEnvio="local" %>
+                                            <input type="submit" class="btnCarrito " value="Pagar">
+                                            <!--<a href="/comprar" class="btn btn-dark">Pagar</a>-->
+                                    </div>
 
 <div class="container">
     <div class="row mt-5">
@@ -83,7 +176,7 @@
                         
                     </form>
                 </div>
-            </div>            
+            </div>
         </div>
         <%}%>
     </div>
@@ -106,4 +199,19 @@
     </script>
   <% } %>
 
-<script src="/js/main.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <% if (typeof alert !="undefined" ) { %>
+                <script>
+                    Swal.fire({
+                        title: '<%= alertTitle %>',
+                        text: '<%= alertMessage %>',
+                        icon: '<%= alertIcon %>',
+                        showConfirmButton: '<%= showConfirmButton %>',
+                        timer: '<%= timer %>'
+                    }).then(() => {
+                        //window.location='/<%= ruta %>'
+                    })
+                </script>
+                <% } %>
+
+                    <script src="/js/main.js"></script>

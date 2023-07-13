@@ -240,6 +240,7 @@ input[type="range"]::-webkit-slider-thumb {
     margin-top: 0;
 }
 
+
 /* Vista de grilla */
 .boxProductos.grilla {
     display: flex;
@@ -252,11 +253,11 @@ input[type="range"]::-webkit-slider-thumb {
     width: 32%;
 }
 
-.boxProductos.grilla .boxLamps:nth-child(4) {
+.boxProductos.grilla .boxLamps:nth-of-type(4){
     width: 65%;
 }
 
-.boxProductos.grilla .boxLamps:nth-child(9) {
+.boxProductos.grilla .boxLamps:nth-of-type(9){
     width: 100%;
 }
 

@@ -1,65 +1,56 @@
 <%-include('./partials/head.ejs') %>
-<%-include('./partials/header.ejs') %>
+  <%-include('./partials/header.ejs') %>
 
-<div class="container-fluid d-flex justify-content-center contenedorPrincipal">
-    <div class="container w-75 contenedorSecundario diseniadores">
-        <div class="">
-            <form class="row g-3">    
-                <div class="col-md-6">
-                  <label for="inputApellido" class="form-label">Apellido</label>
-                  <input type="email" class="form-control" id="inputApellido">
+    <div class="container-fluid d-flex justify-content-center contenedorPrincipal">
+      <div class="container w-75 contenedorSecundario diseniadores contacto">
+        <h1>nuestros contactos</h1>
+        <div class="d-flex boxInfoLocal">
+          <img src="/img/localizacion.jpg" alt="" class="imgUbicacion">
+          <div class="infoLocal">
+            <h3 class="tituloContacto">email</h3>
+            <a href="mailto:mommolights@gmail.com" class="contactoLocal">mommolights@gmail.com</a>
+            <a href="mailto:mommo@icloud.com" class="contactoLocal">mommo@icloud.com</a>
+            <h3 class="tituloContacto">dirección</h3>
+            <p class="contactoLocal">R St California,CA94102</p>
+            <h3 class="tituloContacto">telefonos</h3>
+            <p class="contactoLocal">+1 747 310-730-2432</p>
+          </div>
+        </div>
+        <div class="d-flex contenedorFormImg">
+          <div class="formConsultas">
+            <h3>Su consulta</h3>
+            <p>Si deseas hacer un pedido de diseño personalizado o especificar los términos de entrega, escríbenos.
+              Siempre estamos disponibles y dispuestos a ayudar</p>
+            <form action="" class="formContacto">
+              <input type="text" class="nombreForm" id="inputNombre" placeholder="Por favor presentese">
+              <input type="email" class="formEmail" id="inputMail" placeholder="Ingrese su email">
+              <div class="d-flex boxConsultaBtn">
+                <input type="text" class="consultaForm" name="" id="inputMensaje"
+                  placeholder="Describa la esencia de la pregunta o sugerencia">
+                <button type="submit" class="btnForm">
+                  <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="creadoresSignUp">
+            <div class="boxLamps">
+                <img src="/img/designers/allTheWayToParis.jpg" alt="allTheWayToParis" />
+                <div class="contenedorTextos">
+                    <p class="creador">All the way to Paris</p>
                 </div>
-                <div class="col-md-6">
-                  <label for="inputNombre" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="inputNombre">
-                </div>
-                <div class="col-12">
-                    <label for="inputMail" class="form-label">Mail</label>
-                </div>
-                <div class="col-md-6">
-                    <label class="visually-hidden" for="autoSizingInput">Name</label>
-                    <input type="text" class="form-control" id="autoSizingInput" placeholder="NN">
-                  </div>
-                <div class="col-md-6">
-                    <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
-                    <div class="input-group">
-                      <div class="input-group-text">@</div>
-                      <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="gmail.com">
-                    </div>
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Direccion</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="">
-                </div>
-                <div class="col-12">
-                  <label for="inputMensaje" class="form-label">Mensaje</label>
-                  <textarea class="form-control" id="inputMensaje"></textarea>
-                  
-                </div>
-                <div class="col-md-6">
-                  <label for="inputProv" class="form-label">Provincia</label>
-                  <input type="text" class="form-control" id="inputProv">
-                </div>
-                <div class="col-md-4">
-                    <label for="inputLoc" class="form-label">Localidad</label>
-                    <input type="text" class="form-control" id="inputLoc">
-                </div>
-                <div class="col-md-2">
-                  <label for="inputCP" class="form-label">C.P.</label>
-                  <input type="text" class="form-control" id="inputCP">
-                </div>
-                
-                <div class="col-12">
-                  <button type="submit" class="btn btn-dark">Enviar</button>
-                </div>
-              </form>
-        </div>    
-    
+            </div>
+        </div>
+         
+        </div>
+
+      </div>
     </div>
-</div>
 
 
 
 
+    <script src="/js/main.js"></script>
+    <%-include('./partials/footer.ejs') %>
 
-<script src="/js/main.js"></script>
+   

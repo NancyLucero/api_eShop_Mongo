@@ -15,16 +15,16 @@ window.addEventListener('resize', cambiarNombreLogo);
 document.addEventListener('DOMContentLoaded', cambiarNombreLogo);
 
 // cambio bakcground color segun direccion
-if (window.location.pathname === '/comercio' ||
+if (window.location.pathname === '/productos/comercio' ||
   window.location.pathname === '/diseniadores' ||
-  window.location.pathname === '/carreras' ||
   window.location.pathname === '/contacto' ||
   window.location.pathname === '/buscador' ||
   window.location.pathname === '/carrito' ||
   window.location.pathname === '/buscador' ||
   window.location.pathname === '/login' ||
   window.location.pathname === '/registrar' ||
-  window.location.pathname === '/producto' ) {
+  window.location.pathname.startsWith('/carreras') ||
+  window.location.pathname.startsWith('/producto') ) {
 
   let header = document.getElementById('headerBg');
   let logo = document.getElementById('logo');

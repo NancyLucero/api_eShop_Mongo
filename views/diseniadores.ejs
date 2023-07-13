@@ -1,24 +1,23 @@
-<%-include('./partials/head.ejs') %>
-<%-include('./partials/header.ejs') %>
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/header.ejs') %>
 
 <div class="container-fluid d-flex justify-content-center contenedorPrincipal">
     <div class="container w-75 contenedorSecundario diseniadores">
         <h1>nuestros diseñadores</h1>
         <div class="d-flex justify-content-between contenedorDiseniadores">
-                <!--hacer for each de diseniadores  -->
-            <%for(let i=0; i<=12; i++){ %>
-                <div class="boxLamps boxDiseniador">
-                    <img src="/img/Lamparas/lampara.jpg" alt="">
+            
+            <% for(let i = 0; i < diseniadores.length; i++) { %>
+                <div class="boxLamps boxDiseniador" id="diseniador-<%= diseniadores[i].id %>" data-diseniador-id="<%= diseniadores[i].id %>" onclick="redireccionDiseniador('<%= diseniadores[i].id %>')">
+                    <img src="img/designers/<%= diseniadores[i].imagens %>" alt="<%= diseniadores[i].nombre %>">
                     <div class="contenedorTextos">
-                        <p class="diseniador">diseñador</p>
+                        <p class="diseniador"><%= diseniadores[i].nombre %></p>
                     </div>
                 </div>
-                <%}%>
+            <% } %>
         </div>
     </div>
 </div>
 
-
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-
+<script src="/js/diseniadores.js"></script>
