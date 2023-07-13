@@ -16,7 +16,7 @@ const productoSchema = mongoose.Schema({
     },
     infoAutor:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'diseniador',
+        ref: 'Diseniador',
         required: true
     },
     precio: {
@@ -39,7 +39,7 @@ const productoSchema = mongoose.Schema({
     }],
     categoria: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'categoria',
+        ref: 'Categoria',
         required: true
     },
     rating: {
@@ -61,6 +61,21 @@ const productoSchema = mongoose.Schema({
     },
     vendidos:{
         type:Number
+    },
+    img1:{
+        type:String
+    },
+    img2:{
+        type:String
+    },
+    img3:{
+        type:String
+    },
+    img4:{
+        type:String
+    },
+    img5:{
+        type:String
     }
 })
 

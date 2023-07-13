@@ -2,12 +2,12 @@
     <div class="container  w-75 contenedorSecundario">
         <h1>mejores diseñadores del mes</h1>
         <div class="d-flex justify-content-between contenedorBSellers">
-            <%for(let i=1; i<=2; i++){ %>
-            <div class="boxLamps boxBestDiseniador">
-                <img src="/img/Lamparas/lampara.jpg" alt="">
+            <% for (let i = 0; i < diseniadores.length; i++) { %>
+            <div class="boxLamps boxBestDiseniador" id="diseniador-<%= diseniadores[i].id %>" data-diseniador-id="<%= diseniadores[i].id %>" onclick="redireccionDiseniador('<%= diseniadores[i].id %>')">
+                <img src="img/designers/<%= diseniadores[i].imagens %>" alt="<%= diseniadores[i].nombre %>">
                 <div class="contenedorTextos">
-                    <p class="marca nombreDiseniador">nombre diseñador</p>
-                    <p class="descripcionDiseniador">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sequi, velit dolores aliquid earum optio assumenda error nihil laborum tempora accusamus, ratione at similique tempore totam iure officiis rem maxime.</p>
+                    <p class="marca nombreDiseniador"><%= diseniadores[i].nombre %></p>
+                    <p class="descripcionDiseniador"><%= diseniadores[i].descripcion %></p>
                 </div>
             </div>
             <% }%>
@@ -15,3 +15,5 @@
         </div>
     </div>
 </div>
+
+<script src="/js/diseniadores.js"></script>

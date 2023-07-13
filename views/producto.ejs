@@ -5,21 +5,34 @@
       <div class="container w-75 contenedorSecundario paginaProducto">
         <div class="d-flex contenedorInfoProductos">
           <h3 class="tituloOculto"><%= product.nombre %></h3>
-          <img src="/img/Lamparas/<%=product.imagen%>"alt="<%= product.nombre %>">
+          <img src="/img/Lamparas/Productos/<%=product.imagen%>" alt="<%= product.nombre %>">
           <div class="infoProductos">
             <h3><%= product.nombre %></h3>
             <p>$ <%= product.precioLista %> <span class="descuento">$<%= product.precio %></span></p>
             <div class="d-flex flex-wrap boxBtn">
-              <button class="btnProductos">-</button>
-              <input type="text" name="cantidad" id="" class="cantidad">
-              <button class="btnProductos">+</button>
+              <form method="post" action="editarCantidad" id="editarCantidad">
+                <input type="hidden" name="id" value="<%= product.idproduct %>">
+                <input type="submit" value="-" class="btnProductos" name="decrementar">
+                <input type="text" class="cantidad " size=2 name="cantidad"
+                    value="<%= product.cantidad %>" readonly>
+                <input type="submit" value="+" class="btnProductos" name="incrementar">
+            </form>
               <form action="/productos/agregar" method="post">
                 <input type="hidden" name="idProducto" value="<%= product.id %>">
                 <input type="hidden" name="nombre" value="<%= product.nombre %>">
                 <input type="hidden" name="precio" value="<%= product.precio %>">
                 <input type="hidden" name="imagen" value="<%= product.imagen %>">
                 <input type="hidden" name="cantidad" value="1">
-                <input class="btnCarrito" type="submit" value="Agregar al carrito">                        
+
+                <!-- carrito -->
+                <form action="/productos/agregar" method="post">
+                  <input type="hidden" name="idProducto" value="<%= product.id %>">
+                  <input type="hidden" name="nombre" value="<%= product.nombre %>">
+                  <input type="hidden" name="precio" value="<%= product.precio %>">
+                  <input type="hidden" name="imagen" value="<%= product.imagen %>">
+                  <input type="hidden" name="cantidad" value="1">
+                  <input class="btnCarrito" type="submit" value="Agregar al carrito">                        
+                </form>                        
               </form>
             </div>
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -65,7 +78,11 @@
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    <p>pruebas y certificaciones de producto</p>
+                    <p>Certificaciones
+                      CE, CB, IP44, Clase III, UKCA, UL
+                      
+                      Fabricante
+                      Producido en China por Nine United China Ltd.</p>
                   </div>
                 </div>
               </div>
@@ -74,29 +91,34 @@
         </div>
         <div class="galeriaProductos">
           <!-- mostrar solo 5 productos de c/diseñador -->
-          <%for(let i=0;i<=4;i++){%>
-            <img src="/img/Lamparas/<%=product.imagen%>"alt="<%= product.nombre %>">
-          <%}%>
+          <img src="/img/Lamparas/Productos/<%=product.img1%>" alt="<%= product.nombre %>">
+          <img src="/img/Lamparas/Productos/<%=product.img2%>" alt="<%= product.nombre %>">
+          <img src="/img/Lamparas/Productos/<%=product.img3%>" alt="<%= product.nombre %>">
+          <img src="/img/Lamparas/Productos/<%=product.img4%>" alt="<%= product.nombre %>">
+          <img src="/img/Lamparas/Productos/<%=product.img5%>" alt="<%= product.nombre %>">
+      
+          
         </div>
-        <div id="modalImagenes">
+        <!-- <div id="modalImagenes">
           <div class="boxImgModal" id="boxImgModal">
             <i class="bi bi-x-lg cerrarModal"></i>
             <i class="bi bi-caret-left slider" id="btnIzq" onclick="deslizarIzq()"></i>
             <div class="imgProductoModal">
-                <img src="/img/Lamparas/<%=product.imagen%>"alt="<%= product.nombre %>" data-modal-id="modalImagenes">
-                <img src="/img/ubicacion.jpg"alt="<%= product.nombre %>" data-modal-id="modalImagenes">
-                <img src="/img/Lamparas/<%=product.imagen%>"alt="<%= product.nombre %>" data-modal-id="modalImagenes">
-                <img src="/img/ubicacion.jpg"alt="<%= product.nombre %>" data-modal-id="modalImagenes">
+                <img src="/img/Lamparas/Productos/<%=product.img1%>" alt="<%= product.nombre %>" data-modal-id="modalImagenes">
+                <img src="/img/Lamparas/Productos/<%=product.img2%>" alt="<%= product.nombre %>" data-modal-id="modalImagenes">
+                <img src="/img/Lamparas/Productos/<%=product.img3%>" alt="<%= product.nombre %>" data-modal-id="modalImagenes">
+                <img src="/img/Lamparas/Productos/<%=product.img4%>" alt="<%= product.nombre %>" data-modal-id="modalImagenes">
+                <img src="/img/Lamparas/Productos/<%=product.img5%>" alt="<%= product.nombre %>" data-modal-id="modalImagenes">
             </div>
             <i class="bi bi-caret-right slider" id="btnDer" onclick="deslizarDer()"></i>
           </div>
-        </div>
+        </div> -->
         <div class="infoDiseniadorProducto">
           <h3>diseñado por <%=product.autor%></h3>
           <div class="d-flex justify-content-between boxInfoDiseniadorProducto">
-            <img src="/img/Lamparas/lampara.jpg" alt="">
+            <img src="/img/designers/<%= product.fotoAutor %>" alt="<%= product.autor %>">
             <div class="d-flex infoDiseniador">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis possimus animi non qui. Autem alias, ut illo dolores qui voluptatibus delectus, ex accusantium omnis fuga impedit, minima amet sit iusto.</p>
+              <p><%=product.infoAautor%></p>
               <a href="/carreras" class="btnCarrito">Conoce más</a>
             </div>
           </div>

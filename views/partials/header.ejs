@@ -32,15 +32,15 @@
                 </li>                
                 <% if(login) { %>
                     <li>
-                        <p class="enlaces">Usuario: <strong><%= name %></strong></p>                        
+                        <a href="" class="enlaces"><strong><%= name %></strong></a>              
                     </li>
                     <li>
                         <a href="/carrito" class="enlaces">
-                            <p class="enlaces">carro(<strong><%= cant %>)</strong></p>  
+                            carro(<strong><%= cant %>)</strong>
                         </a>                                              
                     </li>
                     <li>                        
-                        <a href="/logout" class="enlaces">Salir</a>
+                        <a href="/logout" class="enlaces"><i class="bi bi-box-arrow-right logOut"></i></a>
                     </li>                    
                 <%}else {%>
                     <li class="">

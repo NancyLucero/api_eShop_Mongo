@@ -12,6 +12,7 @@ router.get(`/`, async (req,res)=>{
         filter = {categoria: req.query.categorias.split(',')}
     }
     const productoLista= await Producto.find(filter);
+    const diseniadores = await Diseniador.find().sort({ vendidos: -1 });
    
     //const productoLista= await Producto.find().select('nombre precio');
     if (!productoLista){
@@ -32,39 +33,48 @@ router.get(`/`, async (req,res)=>{
             cant:cant,
             name: req.session.name,
             products: productoLista,
+            diseniadores: diseniadores.slice(0, 2),
         });
     } else {
         return res.render('home', {
             login: false,
             carrito:false,
             cant:0,
+            diseniadores: diseniadores.slice(0, 2),
             //name: req.session.name,
             products: productoLista
         });
     }
 })
 
+
+
 // redireccion pagina producto
 router.get('/producto/:id', async (req, res) => {
-    const idProducto = req.params.id;
-  
-    try {
-      const producto = await Producto.findById(idProducto);
-  
-      if (!producto) {
-        req.flash('error', 'Producto no encontrado');
-        return res.redirect('/'); 
-      }
-  
-      res.render('producto', { 
-        product: producto,
-        login:false
-     });
-    } catch (error) {
-      req.flash('error', 'Error al obtener el producto');
-      res.redirect('/'); 
+  const idProducto = req.params.id;
+
+  try {
+    const producto = await Producto.findById(idProducto);
+
+    if (!producto) {
+      req.flash('error', 'Producto no encontrado');
+      return res.redirect('/');
     }
-  });
+
+    const diseniador = await Diseniador.findById(producto.infoAutor);
+
+    res.render('producto', {
+      product: producto,
+      diseniador: diseniador,
+      login: false
+    });
+  } catch (error) {
+    req.flash('error', 'Error al obtener el producto');
+    res.redirect('/');
+  }
+});
+
+  
   
 
 // página todos los diseñadores

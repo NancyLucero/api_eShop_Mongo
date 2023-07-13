@@ -1,0 +1,36 @@
+.formCarrito {
+    width: 100%;
+}
+
+.formCarrito>input[type="text"],
+.formCarrito>input[type="email"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 1px solid #757575;
+    outline-color: var(--ColorTextoSecundario);
+}
+
+.nombreCarrito {
+    width: 49%;
+    margin-right: 9px;
+}
+
+.apellidoCarrito {
+    width: 48%;
+}
+
+.direccionCarrito,
+.telCarrito,
+.emailCarrito {
+    width: 100%;
+}
+
+.boxCarritoPago{
+    accent-color: var(--ColorTextoSecundario);
+}
+@media(max-width:768px){
+    .contenedorCarrito{
+        flex-direction: column;
+    }
+}

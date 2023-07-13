@@ -1,13 +1,14 @@
 <div class="container-fluid d-flex justify-content-center contenedorPrincipal">
-    <div class="container w-75 contenedorSecundario">
-        <h1>venta de colección</h1>
-        <div class="d-flex justify-content-between contenedorBSellers">
-            <% for (let i = 0; i < 8; i++) { %>
-                <div class="bsellersItem">
-                  <%- include('../lampProduct.ejs', { product: products[i] }) %>
-                </div>
-              <% } %>
-            
-        </div>
-    </div>
+  <div class="container w-75 contenedorSecundario">
+      <h1>venta de colección</h1>
+      <div class="d-flex justify-content-between contenedorBSellers">
+        <% const filteredProducts = products.filter(product => product.precio !== undefined); %>
+          <% for (let i = 0; i < 8 && i < filteredProducts.length; i++) { %>
+              <div class="bsellersItem">
+                
+              </div>
+          <% } %>
+          
+      </div>
+  </div>
 </div>

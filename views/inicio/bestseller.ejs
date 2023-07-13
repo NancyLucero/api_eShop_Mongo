@@ -2,9 +2,11 @@
   <div class="container w-75 contenedorSecundario">
     <h1>mejores ventas de Space Copenhagen</h1>
     <div class="d-flex justify-content-between contenedorBox">
-      <% for (let i = 0; i < 4; i++) { %>
+      <% products.sort((a, b) => b.ventas - a.ventas); %>
+      <% for (let i = 0; i < 4 && i < products.length; i++) { %>
         <div class="boxLampsBestSeller">
           <%- include('../lampProduct.ejs', { product: products[i] }) %>
+          
         </div>
       <% } %>
       

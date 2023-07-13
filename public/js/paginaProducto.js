@@ -22,19 +22,22 @@ function redirectToProduct(productId) {
   });
   
   // deslizar imagenes
-  let btnDer = document.getElementById('btnDer');
-  let btnIzq = document.getElementById('btnIzq');
-  let boxImgModal = document.querySelector('.boxImgModal');
+  // let btnDer = document.getElementById('btnDer');
+  // let btnIzq = document.getElementById('btnIzq');
+  // let boxImgModal = document.querySelector('.boxImgModal .imgProductoModal');
+
   
-  btnDer.addEventListener('click', deslizarDer);
-  btnIzq.addEventListener('click', deslizarIzq);
+  // btnDer.addEventListener('click', deslizarDer);
+  // btnIzq.addEventListener('click', deslizarIzq);
   
-  function deslizarDer() {
-    const imgWidth = boxImgModal.children[1].offsetWidth;
-    boxImgModal.scrollLeft += imgWidth;
-  }
+  // function deslizarDer() {
+  //   const imgWidth = boxImgModal.children[1].offsetWidth;
+  //   boxImgModal.scrollLeft += imgWidth;
+  // }
   
-  function deslizarIzq() {
-    const imgWidth = boxImgModal.children[1].offsetWidth;
-    boxImgModal.scrollLeft -= imgWidth;
-  }
+  // function deslizarIzq() {
+  //   const imgWidth = boxImgModal.children[1].offsetWidth;
+  //   boxImgModal.scrollLeft -= imgWidth;
+  // }
+
+  
