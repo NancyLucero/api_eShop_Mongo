@@ -2,11 +2,23 @@ const mongoose = require('mongoose');
 
 // schema
 const pedidoSchema = mongoose.Schema({
+    /*
     pedidoItems: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'detallePedido',
         required:true
-    }],
+    }],*/
+    pedidoItems: [{cantidad:{
+        type: Number,
+        require: true,
+    },producto:{
+        type: String,
+        require: true,
+    }}],
+    nombre:{
+        type: String,
+        require: true,
+    },
     direccion:{
         type: String,
         require: true,
@@ -30,8 +42,8 @@ const pedidoSchema = mongoose.Schema({
         require: true,
     },
     user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'users'
+        type: String,
+        require: true,
     },
     fechaPedido:{
         type: Date,

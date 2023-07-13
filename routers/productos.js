@@ -5,7 +5,7 @@ const express = require('express');
 const router= express.Router();
 const mongoose = require('mongoose');
 
-// funciones
+// funciones para calcular cuando se selecciona un producto
 
 function productoEnCarrito(carrito,id){
     for(let i=0; i<carrito.length; i++){
@@ -27,6 +27,10 @@ function productoEnCarrito(carrito,id){
 
 // EJEMPLO
 //http://localhost:3000/productos?categorias=64aab34506801491d9e95857
+
+
+//====== trae todos los productos ========
+
 router.get(`/`, async (req,res)=>{
     let filter ={};
     if (req.query.categorias){
@@ -39,6 +43,8 @@ router.get(`/`, async (req,res)=>{
     }
     res.send(productoLista);
 })
+
+//====== trae todos los productos y los envia a comercio ========
 
 router.get(`/comercio`, async (req,res)=>{
     let filter ={};
@@ -73,8 +79,7 @@ router.get(`/comercio`, async (req,res)=>{
     //res.send(productoLista);
 })
 
-
-
+//====== trae un producto por id ========
 
 router.get(`/:id`, async (req,res)=>{
     // busca y trae detalles de la categoria da error 
@@ -86,6 +91,8 @@ router.get(`/:id`, async (req,res)=>{
     }
     res.send(producto);
 })
+
+//====== agrega un producto ========
 
 router.post(`/`,async(req,res)=>{
     const categoria = await Categoria.findById(req.body.categoria);
@@ -104,15 +111,6 @@ router.post(`/`,async(req,res)=>{
         medida: req.body.medida
     })
     
-    /*
-    producto =  await producto.save();
-
-    if (!producto)
-    return res.status(500).send('Producto no ingresado')
-
-    res.send(producto)       
-
-    */
     await producto.save().then((crearProducto=>{
         res.status(201).json(crearProducto)
     })).catch((err)=>{
@@ -122,6 +120,8 @@ router.post(`/`,async(req,res)=>{
         })
     }) 
 })
+
+//====== actualiza un producto ========
 
 router.put(`/:id`,async(req,res)=>{
     if (!mongoose.isValidObjectId(req.params.id)){
@@ -152,6 +152,7 @@ router.put(`/:id`,async(req,res)=>{
     res.send(producto)
 })
 
+//====== borra un producto ========
 
 router.delete(`/:id`,async(req,res)=>{
     Producto.findByIdAndRemove(req.params.id).then(producto=>{
@@ -180,7 +181,7 @@ router.get(`/get/count`, async (req,res)=>{
 })
 */
 
-// busca todos los productos activos
+// ======== busca todos los productos activos =========
 
 router.get(`/get/activos`, async (req,res)=>{
     const productos = await Producto.find({activo:'S'})
@@ -191,7 +192,7 @@ router.get(`/get/activos`, async (req,res)=>{
     res.send(productos);
 })
 
-// busca todos los productos categorias
+// ======= busca todos los productos categorias ==========
 
 router.get(`/get/prodPorCat`, async (req,res)=>{
     //const productos = await Producto.find({categoria:'64aab3d312ccb10f217bd876'})
@@ -206,7 +207,7 @@ router.get(`/get/prodPorCat`, async (req,res)=>{
 // ================ FUNCIONALIDAD CARRITOS ==========================
 
 
-// agregar al carrito
+// ====== agregar producto al carrito =========
 
 router.post(`/agregar`, (req,res)=>{    
     if (req.session.loggedin){
@@ -229,8 +230,7 @@ router.post(`/agregar`, (req,res)=>{
         calcularTotal(carritos,req);
         
         // ir a pagina carrito
-               
-        const user = req.session.name 
+
         res.render('carrito',{
                     cart:true,
                     carritos:carritos,
@@ -245,7 +245,7 @@ router.post(`/agregar`, (req,res)=>{
                     alertIcon: 'success',
                     showConfirmButton:false,
                     timer:1800,
-                    ruta:`carrito`
+                    ruta:''
                 }) 
     }else{
         res.render('login',{
@@ -260,38 +260,23 @@ router.post(`/agregar`, (req,res)=>{
     }
   })
 
-// quitar producto del carrito
+// ====== quitar producto del carrito ========
 
 router.post(`/quitarProducto`, (req,res)=>{
     var id=req.body.id;
     var carritos = req.session.carrito;
     for(let i=0;i<carritos.length;i++){
         if(carritos[i].idProducto==id){
-            carritos.splice(carritos.indexOf(i),1);
+            carritos.splice(i,1);
         }
     }
     // recalcular total
 
     calcularTotal(carritos,req);
-    //return res.redirect('carrito')
-    if (req.session.carrito) {        
-        return res.render('carrito',{
-            cart:false,
-            login:true,
-            name:req.session.name,
-            alert:true,
-            alertTitle: "Productos",
-            alertMessage: "No tiene nada agregado al carrito",
-            alertIcon: 'warning',
-            showConfirmButton:false,
-            timer:1800,
-            ruta:`productos/comercio`
-        });
-    }else{
-        return res.send("se quito")
-    }
+
+    return res.redirect('/carro/carrito')
   })
 
-
+ 
 
   module.exports=router;

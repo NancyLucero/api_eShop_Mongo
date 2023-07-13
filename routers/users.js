@@ -23,7 +23,9 @@ router.get(`/:id`, async (req,res)=>{
     res.status(200).send(user);
 })
 
-router.post(`/`,async (req,res)=>{    
+// ==== registrar usuario =======
+
+router.post(`/registrar`,async (req,res)=>{    
     const user = new User({
         user: req.body.user,
         name: req.body.name,
@@ -31,14 +33,25 @@ router.post(`/`,async (req,res)=>{
         pass: bcrypt.hashSync(req.body.pass)
     })
     await user.save().then((crearUser=>{
-        res.status(201).json(crearUser)
+        //res.status(201).json(crearUser);
+        res.render('login', {
+            alert: true,
+            alertTitle: "Registracion Exitosa",
+            alertMessage: "Alta Correcto",
+            alertIcon: 'success',
+            showConfirmButton: false,
+            timer: 1800,
+            ruta: ''
+        })
     })).catch((err)=>{
         res.status(500).json({
             error:err,
             success: false
         })
-    })    
+    })
 })
+
+// ==== autenticar usuario =======
 
 router.post(`/auth`,async (req,res)=>{
     
@@ -48,7 +61,7 @@ router.post(`/auth`,async (req,res)=>{
         return res.render('login', {
             alert: true,
             alertTitle: "Advertencia",
-            alertMessage: "Ingrese un usuario",
+            alertMessage: "Usuario inexistente",
             alertIcon: 'warning',
             showConfirmButton: false,
             timer: 1800,
@@ -93,6 +106,8 @@ router.post(`/auth`,async (req,res)=>{
         })
     }   
 })
+
+// ==== borrar usuario =======
 
 router.delete(`/:id`,async(req,res)=>{
     User.findByIdAndRemove(req.params.id).then(user=>{
