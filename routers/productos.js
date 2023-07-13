@@ -221,6 +221,23 @@ router.post(`/agregar`, (req,res)=>{
             var carritos = req.session.carrito;
             if (!productoEnCarrito(carritos,id)){
                 carritos.push(producto);
+            }else{
+                return res.render('carrito',{
+                    cart:true,
+                    carritos:carritos,
+                    carrito:true,
+                    cant:carritos.length,
+                    login:true,
+                    name:req.session.name,
+                    total:req.session.total,
+                    alert:true,
+                    alertTitle: "Productos",
+                    alertMessage: "Producto ya existe en el carrito",
+                    alertIcon: 'warning',
+                    showConfirmButton:false,
+                    timer:2200,
+                    ruta:'./productos/comercio'
+                })
             }
         }else{            
             req.session.carrito=[producto];
@@ -231,6 +248,9 @@ router.post(`/agregar`, (req,res)=>{
         
         // ir a pagina carrito
 
+        // para redireccionar se debe enviar parametros
+        //res.redirect('/carro/carrito');
+        
         res.render('carrito',{
                     cart:true,
                     carritos:carritos,
@@ -245,8 +265,8 @@ router.post(`/agregar`, (req,res)=>{
                     alertIcon: 'success',
                     showConfirmButton:false,
                     timer:1800,
-                    ruta:''
-                }) 
+                    ruta:'./productos/comercio'
+                })
     }else{
         res.render('login',{
             alert:true,

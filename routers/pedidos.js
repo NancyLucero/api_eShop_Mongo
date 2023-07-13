@@ -42,7 +42,7 @@ router.post(`/comprar`,async(req,res)=>{
     }
     let pedido = new Pedido({
         pedidoItems: pedidoItems,
-        nombre: req.body.nombre,
+        nombre: req.body.nombre + " " + req.body.apellido,
         direccion: req.body.direccion,
         ciudad: req.body.ciudad, 
         telefono: req.body.telefono,

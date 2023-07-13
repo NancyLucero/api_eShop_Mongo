@@ -33,25 +33,24 @@ router.get('/carrito', (req, res) => {
             login:true,
             total:total,
             name:req.session.name,
-            producto:producto
+            //producto:producto
             }) 
     }else{
         res.render('carrito',{
-          cart:false,
-          carritos:carritos,
-          carrito:false,
-          cant:0,
-          login:false,
-          total:req.session.total,
-          name:req.session.name,
-          total:0,
-          alert:true,
+        cart:false,
+        carritos:carritos,
+        carrito:false,
+        cant:0,
+        login:false,
+        name:req.session.name,
+        total:0,
+        alert:true,
         alertTitle: "Advertencia",
         alertMessage: "No tiene productos en el carrito",
         alertIcon: 'warning',
         showConfirmButton:false,
         timer:1800,
-        ruta:'/'
+        ruta:'./productos/comercio'
         })
     }
 })

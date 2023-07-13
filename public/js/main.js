@@ -19,7 +19,7 @@ if (window.location.pathname === '/productos/comercio' ||
   window.location.pathname === '/diseniadores' ||
   window.location.pathname === '/contacto' ||
   window.location.pathname === '/buscador' ||
-  window.location.pathname === '/carrito' ||
+  window.location.pathname === '/carro/carrito' ||
   window.location.pathname === '/buscador' ||
   window.location.pathname === '/login' ||
   window.location.pathname === '/registrar' ||

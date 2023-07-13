@@ -10,7 +10,7 @@
             <h3><%= product.nombre %></h3>
             <p>$ <%= product.precioLista %> <span class="descuento">$<%= product.precio %></span></p>
             <div class="d-flex flex-wrap boxBtn">
-              <form method="post" action="editarCantidad" id="editarCantidad">
+              <form method="post" action="/carro/editarCantidad" id="editarCantidad">
                 <input type="hidden" name="id" value="<%= product.idproduct %>">
                 <input type="submit" value="-" class="btnProductos" name="decrementar">
                 <input type="text" class="cantidad " size=2 name="cantidad"
@@ -23,16 +23,7 @@
                 <input type="hidden" name="precio" value="<%= product.precio %>">
                 <input type="hidden" name="imagen" value="<%= product.imagen %>">
                 <input type="hidden" name="cantidad" value="1">
-
-                <!-- carrito -->
-                <form action="/productos/agregar" method="post">
-                  <input type="hidden" name="idProducto" value="<%= product.id %>">
-                  <input type="hidden" name="nombre" value="<%= product.nombre %>">
-                  <input type="hidden" name="precio" value="<%= product.precio %>">
-                  <input type="hidden" name="imagen" value="<%= product.imagen %>">
-                  <input type="hidden" name="cantidad" value="1">
-                  <input class="btnCarrito" type="submit" value="Agregar al carrito">                        
-                </form>                        
+                <input class="btnCarrito" type="submit" value="Agregar al carrito">                      
               </form>
             </div>
             <div class="accordion accordion-flush" id="accordionFlushExample">
