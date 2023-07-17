@@ -168,9 +168,9 @@ router.delete(`/:id`,async(req,res)=>{
 /*
  funcion para contar cantidad de productos pero no funciona
 error -> MongooseError('Model.countDocuments() no longer accepts a callback')
-
+*/
 router.get(`/get/count`, async (req,res)=>{
-    const productoCount = await Producto.countDocuments((count) => count)
+    const productoCount = await Producto.find().count()
 
     if (!productoCount){
         res.status(500).json({success:false})
@@ -179,7 +179,7 @@ router.get(`/get/count`, async (req,res)=>{
         productoCount: productoCount
     });
 })
-*/
+
 
 // ======== busca todos los productos activos =========
 
@@ -249,7 +249,8 @@ router.post(`/agregar`, (req,res)=>{
         // ir a pagina carrito
 
         // para redireccionar se debe enviar parametros
-        //res.redirect('/carro/carrito');
+        //return res.redirect('/carro/carrito');
+        
         
         res.render('carrito',{
                     cart:true,
